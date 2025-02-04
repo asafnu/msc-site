@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Scented Candle - Your Personalized Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+        }
+
+        h1 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .result-container {
+            background: #fff;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .candle-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .inspiration {
+            font-style: italic;
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            color: #e74c3c;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Your Personalized Candle</h1>
+    <div class="result-container" id="resultContainer">
+        <!-- Local image and inspirational sentence will be injected here -->
+    </div>
+    <p>
+        <a href="quiz.html">&larr; Take the Quiz Again</a>
+    </p>
+
+    <script>
+        // Function to get URL parameters
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            queryString.split("&").forEach(pair => {
+                const [key, value] = pair.split("=");
+                if (key) {
+                    params[key] = decodeURIComponent(value);
+                }
+            });
+            return params;
+        }
+
+        // Normalize strings to lowercase and trim spaces
+        function normalizeString(str) {
+            return str.trim().toLowerCase();
+        }
+
+        // Mapping of each scent-mood combination to an inspirational sentence
+        const inspirationMapping = {
+            "lavender-relaxation": "Inhale the calm of lavender and let your spirit drift into deep relaxation.",
+            "lavender-energizing": "Feel the vibrant pulse of lavender igniting your energy and zest for life.",
+            "lavender-romantic": "Let the gentle glow of lavender kindle a soft, romantic ambience.",
+            "lavender-invigorating": "Embrace the invigorating spark of lavender to awaken your inner fire.",
+            "vanilla-relaxation": "Allow the warm essence of vanilla to envelop you in a soothing embrace.",
+            "vanilla-energizing": "Experience the bright energy of vanilla to fuel your creative spirit.",
+            "vanilla-romantic": "Let the sweet allure of vanilla set the stage for a truly romantic evening.",
+            "vanilla-invigorating": "Awaken your senses with the dynamic burst of vanilla’s invigorating notes.",
+            "citrus-relaxation": "Breathe in the refreshing zest of citrus, bringing a calm clarity to your mind.",
+            "citrus-energizing": "Feel the lively spark of citrus infuse you with unstoppable energy.",
+            "citrus-romantic": "Let the delicate charm of citrus blend freshness with a touch of romance.",
+            "citrus-invigorating": "Ignite your passion with the bold, invigorating essence of citrus.",
+            "sandalwood-relaxation": "Sink into the deep, soothing aroma of sandalwood for unparalleled relaxation.",
+            "sandalwood-energizing": "Feel the grounding energy of sandalwood boost your inner vitality.",
+            "sandalwood-romantic": "Embrace the warm, enchanting notes of sandalwood for a deeply romantic mood.",
+            "sandalwood-invigorating": "Let the rich, invigorating power of sandalwood awaken your senses."
+        };
+
+        // Main function to generate results content
+        function generateResults() {
+            const params = getQueryParams();
+            // Default values if parameters are missing
+            let scent = params.q1 || "lavender";
+            let mood = params.q2 || "relaxation";
+
+            scent = normalizeString(scent);
+            mood = normalizeString(mood);
+
+            // Construct the key and corresponding image file path
+            const key = `${scent}-${mood}`;
+            const imagePath = `assets/candles/${key}.jpg`;
+
+            // Retrieve the inspirational sentence from the mapping
+            const inspirationalText = inspirationMapping[key] || "Let your candle light the path to a magical experience.";
+
+            // Build the HTML content for the results container
+            const resultHTML = `
+        <img class="candle-image" src="${imagePath}" alt="${scent} candle for a ${mood} mood">
+        <p class="inspiration">${inspirationalText}</p>
+      `;
+
+            document.getElementById("resultContainer").innerHTML = resultHTML;
+        }
+
+        // Generate the results on page load
+        generateResults();
+    </script>
+</body>
+
+</html>

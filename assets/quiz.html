@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Scented Candle - Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #e74c3c;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+        }
+
+        input[type="submit"] {
+            background: #e74c3c;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            display: block;
+            margin: auto;
+        }
+
+        input[type="submit"]:hover {
+            background: #c0392b;
+        }
+
+        a {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Personalized Scented Candle Quiz</h1>
+    <form action="results.html" method="get">
+        <!-- Question 1 -->
+        <div class="question">
+            <p>1. Choose your favorite scent:</p>
+            <label><input type="radio" name="q1" value="Lavender" required> Lavender</label>
+            <label><input type="radio" name="q1" value="Vanilla"> Vanilla</label>
+            <label><input type="radio" name="q1" value="Citrus"> Citrus</label>
+            <label><input type="radio" name="q1" value="Sandalwood"> Sandalwood</label>
+        </div>
+        <!-- Question 2 -->
+        <div class="question">
+            <p>2. What mood do you want to evoke?</p>
+            <label><input type="radio" name="q2" value="Relaxation" required> Relaxation</label>
+            <label><input type="radio" name="q2" value="Energizing"> Energizing</label>
+            <label><input type="radio" name="q2" value="Romantic"> Romantic</label>
+            <label><input type="radio" name="q2" value="Invigorating"> Invigorating</label>
+        </div>
+        <!-- Question 3 -->
+        <div class="question">
+            <p>3. Preferred candle size:</p>
+            <label><input type="radio" name="q3" value="Small" required> Small</label>
+            <label><input type="radio" name="q3" value="Medium"> Medium</label>
+            <label><input type="radio" name="q3" value="Large"> Large</label>
+        </div>
+        <input type="submit" value="See Your Personalized Candle">
+    </form>
+    <p style="text-align:center; margin-top: 20px;">
+        <a href="index.html">&larr; Back to Home</a>
+    </p>
+</body>
+
+</html>
